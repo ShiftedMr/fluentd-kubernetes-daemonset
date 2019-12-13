@@ -13,7 +13,7 @@ phases:
     commands:
       - $(aws ecr get-login --no-include-email --region $AWS_REGION)
       - $(aws ecr get-login --no-include-email --region $AWS_REGION --registry-id 514563129364)
-      - docker build -t fluentd/fluentd-kubernetes:$CODEBUILD_RESOLVED_SOURCE_VERSION docker-image/v1.7/debian-awselasticsearch6
+      - docker build -t fluentd/fluentd-kubernetes:$CODEBUILD_RESOLVED_SOURCE_VERSION docker-image/v1.7/debian-awselasticsearch7
       - docker tag fluentd/fluentd-kubernetes:$CODEBUILD_RESOLVED_SOURCE_VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/circle-apps/fluentd-kubernetes:$CODEBUILD_RESOLVED_SOURCE_VERSION
       - docker tag fluentd/fluentd-kubernetes:$CODEBUILD_RESOLVED_SOURCE_VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/circle-apps/fluentd-kubernetes:latest
   post_build: # Push the Docker images to the ECR
